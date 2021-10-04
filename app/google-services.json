@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "935172396635",
+    "project_id": "whatsfordinner-78f4d",
+    "storage_bucket": "whatsfordinner-78f4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935172396635:android:7762c0c4d604ef76dfd17e",
+        "android_client_info": {
+          "package_name": "com.cse5236.whatsfordinnerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935172396635-0lejoc28fci9p5s1jkef5epl9cp480bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzJJR06vgOeMgw4_wQcijjzY1b7rGBXmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935172396635-0lejoc28fci9p5s1jkef5epl9cp480bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
