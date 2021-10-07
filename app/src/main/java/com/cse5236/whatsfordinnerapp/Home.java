@@ -7,13 +7,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Home extends AppCompatActivity {
     Ingredients ingredients = new Ingredients();
+
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("Foods");
+
 
         // get data from Foods.json file
         ingredients.getDataFromJson("Foods.json", getApplicationContext());
@@ -34,10 +42,10 @@ public class Home extends AppCompatActivity {
             TextView dairy = findViewById(R.id.dairyText);
 
             fruit.setText(getString(R.string.fruit_text, ingredients.getRandomIngredient(Ingredients.Category.Fruit)));
-            grain.setText(getString(R.string.fruit_text, ingredients.getRandomIngredient(Ingredients.Category.Grain)));
-            vegetable.setText(getString(R.string.fruit_text, ingredients.getRandomIngredient(Ingredients.Category.Vegetable)));
-            protein.setText(getString(R.string.fruit_text, ingredients.getRandomIngredient(Ingredients.Category.Protein)));
-            dairy.setText(getString(R.string.fruit_text, ingredients.getRandomIngredient(Ingredients.Category.Dairy)));
+            grain.setText(getString(R.string.grain_text, ingredients.getRandomIngredient(Ingredients.Category.Grain)));
+            vegetable.setText(getString(R.string.vegetable_text, ingredients.getRandomIngredient(Ingredients.Category.Vegetable)));
+            protein.setText(getString(R.string.protein_text, ingredients.getRandomIngredient(Ingredients.Category.Protein)));
+            dairy.setText(getString(R.string.dairy_text, ingredients.getRandomIngredient(Ingredients.Category.Dairy)));
         }
     }
 }
