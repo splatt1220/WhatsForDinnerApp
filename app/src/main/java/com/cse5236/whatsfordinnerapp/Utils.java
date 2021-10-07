@@ -5,11 +5,22 @@ import android.content.Context;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /*
  * Utility class
  */
 public class Utils {
+
+    public enum Category {
+        Fruit,
+        Grain,
+        Vegetable,
+        Protein,
+        Dairy,
+    }
 
     // parse json file to a string and return
     static String getJsonFromAssets(Context context, String fileName) {
@@ -29,6 +40,21 @@ public class Utils {
         }
 
         return jsonString;
+    }
+
+    public static String getRandomIngredient(List<Food> foodList, String foodType) {
+        Random rand = new Random();
+        List<String> nameList = new ArrayList<>();
+        for(Food food : foodList){
+            if (food.getFood_type() == foodType){
+                nameList.add(food.getFood_name());
+            }
+        }
+        String result = "Not found";
+        if (nameList != null)
+            result = nameList.get(rand.nextInt(nameList.size()));
+
+        return result;
     }
 }
 

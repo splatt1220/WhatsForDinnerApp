@@ -16,19 +16,27 @@ public class DatabaseHelper {
     private DatabaseReference mReferenceFoods;
     private List<Food> foods = new ArrayList<>();
 
-    public interface DataStatus{
-        void DataIsLoaded(List<Food> foods, List<String> keys);
-        void DataIsInserted();
-        void DataIsUpdated();
-        void DataIsDeleted();
+    public List<Food> getFoods() {
+        return foods;
     }
+
+//    public interface DataStatus{
+//        void DataIsLoaded(List<Food> foods, List<String> keys);
+//        void DataIsInserted();
+//        void DataIsUpdated();
+//        void DataIsDeleted();
+//    }
 
     public DatabaseHelper() {
         mDatabase = FirebaseDatabase.getInstance();
         mReferenceFoods = mDatabase.getReference("Foods");
     }
 
-    public void readFoods(final DataStatus dataStatus){
+
+    public void getReadFoods(){
+        System.out.println(mReferenceFoods.get().toString());
+    }
+    public void readFoods(){
         mReferenceFoods.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -37,14 +45,15 @@ public class DatabaseHelper {
                 for(DataSnapshot keyNode : snapshot.getChildren()){
                     keys.add(keyNode.getKey());
                     Food food = keyNode.getValue(Food.class);
+                    System.out.println(food.getFood_name());
                     foods.add(food);
                 }
-                dataStatus.DataIsLoaded(foods,keys);
+//                dataStatus.DataIsLoaded(foods,keys);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                System.out.println("it failed");
             }
         });
     }
