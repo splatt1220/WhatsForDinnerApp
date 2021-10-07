@@ -1,0 +1,24 @@
+{ "Foods" : [ {"name":"Apple", "value":"Fruit"},
+  {"name":"Banana", "value":"Fruit"},
+  {"name":"Blueberries", "value":"Fruit"},
+  {"name":"Dates", "value":"Fruit"},
+
+  {"name":"Broccoli", "value":"Vegetable"},
+  {"name":"Carrots", "value":"Vegetable"},
+  {"name":"Spinach", "value":"Vegetable"},
+  {"name":"Sweet Potato", "value":"Vegetable"},
+
+  {"name":"Bagel", "value":"Grain"},
+  {"name":"Sliced Bread", "value":"Grain"},
+  {"name":"Quinoa", "value":"Grain"},
+  {"name":"Rice", "value":"Grain"},
+
+  {"name":"Beef", "value":"Protein"},
+  {"name":"Chicken", "value":"Protein"},
+  {"name":"Eggs", "value":"Protein"},
+  {"name":"Lentils", "value":"Protein"},
+
+  {"name":"Milk", "value":"Dairy"},
+  {"name":"Yogurt", "value":"Dairy"},
+  {"name":"Cheese", "value":"Dairy"}
+] }
