@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">WhatsForDinnerApp</string>
+    <string name="settings_button">Settings</string>
+    <string name="about_button">About</string>
+    <string name="shuffle_button">Shuffle</string>
+    <string name="fruit_text">Fruit:</string>
+    <string name="grains_text">Grains:</string>
+    <string name="vegetables_text">Vegetables:</string>
+    <string name="protein_text">Proteins:</string>
+    <string name="dairy_text">Dairy:</string>
 </resources>
