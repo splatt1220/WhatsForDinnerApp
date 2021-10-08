@@ -20,12 +20,12 @@ public class DatabaseHelper {
         return foods;
     }
 
-//    public interface DataStatus{
-//        void DataIsLoaded(List<Food> foods, List<String> keys);
+    public interface dataStatus{
+        void DataIsLoaded(List<Food> foods);
 //        void DataIsInserted();
 //        void DataIsUpdated();
 //        void DataIsDeleted();
-//    }
+    }
 
     public DatabaseHelper() {
         mDatabase = FirebaseDatabase.getInstance();
@@ -33,9 +33,9 @@ public class DatabaseHelper {
     }
 
 
-    public void getReadFoods(){
-        System.out.println(mReferenceFoods.get().toString());
-    }
+//    public void getReadFoods(){
+//        System.out.println(mReferenceFoods.get().toString());
+//    }
     public void readFoods(){
         mReferenceFoods.addValueEventListener(new ValueEventListener() {
             @Override
@@ -48,7 +48,8 @@ public class DatabaseHelper {
                     System.out.println(food.getFood_name());
                     foods.add(food);
                 }
-//                dataStatus.DataIsLoaded(foods,keys);
+//                listener.DataIsLoaded(foods);
+
             }
 
             @Override

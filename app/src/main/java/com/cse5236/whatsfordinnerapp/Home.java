@@ -10,11 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
     DatabaseHelper dataHelper = new DatabaseHelper();
-    private List<Food> foods;
+    private List<Food> foods = new ArrayList<>();
     private TextView fruit;
     private TextView vegetable;
     private TextView grain;
@@ -30,7 +31,9 @@ public class Home extends AppCompatActivity {
         System.out.println("testing print");
         currentPicks = new String[5];
         //will probably need to be in recycler view in the future
-//        dataHelper.readFoods();
+        dataHelper.readFoods();
+
+        foods = dataHelper.getFoods();
 
         fruit = findViewById(R.id.fruitText);
         grain = findViewById(R.id.grainText);
