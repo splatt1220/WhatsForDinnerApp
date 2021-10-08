@@ -1,24 +1,43 @@
-{ "Foods" : [ {"name":"Apple", "value":"Fruit"},
-  {"name":"Banana", "value":"Fruit"},
-  {"name":"Blueberries", "value":"Fruit"},
-  {"name":"Dates", "value":"Fruit"},
+{ "Foods" : [ {
+  "food_name":"Apple", "food_type":"Fruit"},
+  {
+    "food_name":"Banana", "food_type":"Fruit"},
+  {
+    "food_name":"Blueberries", "food_type":"Fruit"},
+  {
+    "food_name":"Dates", "food_type":"Fruit"},
 
-  {"name":"Broccoli", "value":"Vegetable"},
-  {"name":"Carrots", "value":"Vegetable"},
-  {"name":"Spinach", "value":"Vegetable"},
-  {"name":"Sweet Potato", "value":"Vegetable"},
+  {
+    "food_name":"Broccoli", "food_type":"Vegetable"},
+  {
+    "food_name":"Carrots", "food_type":"Vegetable"},
+  {
+    "food_name":"Spinach", "food_type":"Vegetable"},
+  {
+    "food_name":"Sweet Potato", "food_type":"Vegetable"},
 
-  {"name":"Bagel", "value":"Grain"},
-  {"name":"Sliced Bread", "value":"Grain"},
-  {"name":"Quinoa", "value":"Grain"},
-  {"name":"Rice", "value":"Grain"},
+  {
+    "food_name":"Bagel", "food_type":"Grain"},
+  {
+    "food_name":"Sliced Bread", "food_type":"Grain"},
+  {
+    "food_name":"Quinoa", "food_type":"Grain"},
+  {
+    "food_name":"Rice", "food_type":"Grain"},
 
-  {"name":"Beef", "value":"Protein"},
-  {"name":"Chicken", "value":"Protein"},
-  {"name":"Eggs", "value":"Protein"},
-  {"name":"Lentils", "value":"Protein"},
+  {
+    "food_name":"Beef", "food_type":"Protein"},
+  {
+    "food_name":"Chicken", "food_type":"Protein"},
+  {
+    "food_name":"Eggs", "food_type":"Protein"},
+  {
+    "food_name":"Lentils", "food_type":"Protein"},
 
-  {"name":"Milk", "value":"Dairy"},
-  {"name":"Yogurt", "value":"Dairy"},
-  {"name":"Cheese", "value":"Dairy"}
+  {
+    "food_name":"Milk", "food_type":"Dairy"},
+  {
+    "food_name":"Yogurt", "food_type":"Dairy"},
+  {
+    "food_name":"Cheese", "food_type":"Dairy"}
 ] }

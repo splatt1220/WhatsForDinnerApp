@@ -23,6 +23,9 @@ public class Home extends AppCompatActivity {
         shuffleButton.setOnClickListener(new ShuffleClickHandler());
     }
 
+    // write a persist for each category
+    // shared preferences preferencesmanager.getdefaultsharedpreferences
+
     private class ShuffleClickHandler implements View.OnClickListener {
         // shuffle ingredients of the plate
         public void onClick(View view) {
