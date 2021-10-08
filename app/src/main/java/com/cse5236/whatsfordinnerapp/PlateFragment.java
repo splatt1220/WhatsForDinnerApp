@@ -37,7 +37,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_plate, container, false);
 
         Activity activity = requireActivity();
         ingredients.getDataFromJson("Foods.json", activity.getApplicationContext());
