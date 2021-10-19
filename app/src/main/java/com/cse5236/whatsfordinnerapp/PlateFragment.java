@@ -65,17 +65,17 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-
-        currentPicks[0] = getString(R.string.fruit_text);
-        fruit.setText(currentPicks[0]);
-        currentPicks[1] = getString(R.string.grain_text);
-        grain.setText(currentPicks[1]);
-        currentPicks[2] = getString(R.string.vegetable_text);
-        vegetable.setText(currentPicks[2]);
-        currentPicks[3] = getString(R.string.protein_text);
-        protein.setText(currentPicks[3]);
-        currentPicks[4] = getString(R.string.dairy_text);
-        dairy.setText(currentPicks[4]);
+            // this needs to be adjusted once we figure out how to add persistence
+//        currentPicks[0] = getString(R.string.fruit_text);
+//        fruit.setText(currentPicks[0]);
+//        currentPicks[1] = getString(R.string.grain_text);
+//        grain.setText(currentPicks[1]);
+//        currentPicks[2] = getString(R.string.vegetable_text);
+//        vegetable.setText(currentPicks[2]);
+//        currentPicks[3] = getString(R.string.protein_text);
+//        protein.setText(currentPicks[3]);
+//        currentPicks[4] = getString(R.string.dairy_text);
+//        dairy.setText(currentPicks[4]);
     }
 
     @Override
