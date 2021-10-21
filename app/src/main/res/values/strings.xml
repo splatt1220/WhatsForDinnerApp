@@ -8,4 +8,9 @@
     <string name="vegetable_text">Vegetable: %1$s</string>
     <string name="protein_text">Protein: %1$s</string>
     <string name="dairy_text">Dairy: %1$s</string>
+    <string name="login_button">Login</string>
+    <string name="reg_button">Register</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_enter">Email</string>
+    <string name="password_hint">Password</string>
 </resources>

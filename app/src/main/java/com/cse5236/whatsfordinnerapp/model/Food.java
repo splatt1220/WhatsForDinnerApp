@@ -1,4 +1,4 @@
-package com.cse5236.whatsfordinnerapp;
+package com.cse5236.whatsfordinnerapp.model;
 
 /**
  * Helper class for the Foods table in Firebase Database

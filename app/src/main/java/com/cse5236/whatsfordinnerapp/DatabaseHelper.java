@@ -2,6 +2,7 @@ package com.cse5236.whatsfordinnerapp;
 
 import androidx.annotation.NonNull;
 
+import com.cse5236.whatsfordinnerapp.model.Food;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,10 +1,7 @@
 package com.cse5236.whatsfordinnerapp;
 
-import android.content.Context;
+import com.cse5236.whatsfordinnerapp.model.Food;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
