@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,6 +51,9 @@ public class AuthFragment extends Fragment implements View.OnClickListener {
         if(mLoginButton.getId() == viewId) {
                 //TODO submit info to firebase
         } else if (mRegister.getId() == viewId) {
+            Activity activity = requireActivity();
+            startActivity(new Intent(activity, RegisterActivity.class));
+//            activity.finish();
                 //TODO sends to register page
         }
     }

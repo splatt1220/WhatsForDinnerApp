@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -82,6 +83,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 //                    @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        Activity activity = requireActivity();
                         if(task.isSuccessful()){
                             User user = new User(name, email);
 
@@ -90,19 +92,22 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>(){
 //                                @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    Activity activity = requireActivity();
                                     if(task.isSuccessful()){
-//                                        Toast.makeText(RegisterActivity.this, "User created succesfully", Toast.LENGTH_Long).show();
+                                        Toast.makeText(activity, "User created successfully", Toast.LENGTH_LONG).show();
                                         Log.d(TAG, "Successful user creation" );
 
                                         //redirect to login layout
+                                        activity.finish();
+
                                     } else {
-//                                        Toast.makeText(RegisterActivity.this, "Failed to register, try again!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(activity, "Failed to register, try again!", Toast.LENGTH_LONG).show();
                                         Log.d(TAG, "Failed to create user 1" );
                                     }
                                 }
                             });
                         } else {
-//                            Toast.makeText(RegisterActivity.this, "Failed to register, try again!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity, "Failed to register, try again!", Toast.LENGTH_LONG).show();
                             Log.d(TAG, "Failed to create user 2" );
                         }
                     }
