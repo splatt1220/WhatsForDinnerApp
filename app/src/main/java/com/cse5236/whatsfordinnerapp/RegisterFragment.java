@@ -78,27 +78,33 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         }
 
         mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new onCompleteListener<AuthResult>() {
-                    @Override
+                .addOnCompleteListener(this, new onCompleteListener<AuthResult>() {
+//                    @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             User user = new User(name, email);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new onCompleteListener<Void>(){
-                                @Override
+                                    .setValue(user).addOnCompleteListener(this, new onCompleteListener<Void>(){
+//                                @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-//                                        Toast.makeText(RegisterActivity.this, "User created succesfully", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(RegisterActivity.this, "User created succesfully", Toast.LENGTH_Long).show();
                                         Log.d(TAG, "Successful user creation" );
 
-                                        //TODO redirect to login layout
+                                        //redirect to login layout
+                                    } else {
+//                                        Toast.makeText(RegisterActivity.this, "Failed to register, try again!", Toast.LENGTH_LONG).show();
+                                        Log.d(TAG, "Failed to create user 1" );
                                     }
                                 }
-                            })
+                            });
+                        } else {
+//                            Toast.makeText(RegisterActivity.this, "Failed to register, try again!", Toast.LENGTH_LONG).show();
+                            Log.d(TAG, "Failed to create user 2" );
                         }
                     }
-                })
+                });
     }
 }

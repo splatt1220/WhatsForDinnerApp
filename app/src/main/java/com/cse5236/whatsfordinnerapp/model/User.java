@@ -18,4 +18,6 @@ public class User {
         mEmail = email;
 //        mDislikes = new ArrayList<>();
     }
+
+
 }
