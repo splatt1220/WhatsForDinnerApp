@@ -72,6 +72,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
         //TODO make sure name is not empty
         //TODO make sure password >6 characters
+        if(password.isEmpty()){
+            mPassword.setError("Please enter a password");
+            mPassword.requestFocus();
+            return;
+        }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             mEmail.setError("Please give a valid email");
