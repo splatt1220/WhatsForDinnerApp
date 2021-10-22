@@ -1,6 +1,7 @@
 package com.cse5236.whatsfordinnerapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +37,10 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     private TextView protein;
     private TextView dairy;
 
+    private Button shuffleButton;
+    private Button settingsButton;
+    private Button aboutButton;
+
     private String[] currentPicks;
 
     @Override
@@ -59,8 +64,14 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
         currentPicks = new String[5];
 
-        Button shuffleButton = v.findViewById(R.id.shuffleButton);
+        shuffleButton = v.findViewById(R.id.shuffleButton);
         shuffleButton.setOnClickListener(this);
+
+        settingsButton = v.findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(this);
+
+        aboutButton = v.findViewById(R.id.aboutButton);
+        aboutButton.setOnClickListener(this);
 
         return v;
     }
@@ -101,6 +112,25 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        final int viewId = view.getId();
+        Activity activity = requireActivity();
+        switch (viewId) {
+            case R.id.shuffleButton:
+                shuffle();
+                break;
+            case R.id.settingsButton:
+                startActivity(new Intent(activity, SettingsActivity.class));
+                break; //test to see if you can hit back after logging out to break this
+            case R.id.aboutButton:
+                //TODO
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void shuffle() {
         foods = databaseHelper.getFoods();
 
         currentPicks[0] = getString(R.string.fruit_text, Utils.getRandomIngredient(foods, "Fruit"));
