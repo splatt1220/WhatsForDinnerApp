@@ -1,4 +1,4 @@
-package com.cse5236.whatsfordinnerapp;
+package com.cse5236.whatsfordinnerapp.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,10 +19,19 @@ import com.cse5236.whatsfordinnerapp.DatabaseHelper;
 import com.cse5236.whatsfordinnerapp.R;
 import com.cse5236.whatsfordinnerapp.Utils;
 import com.cse5236.whatsfordinnerapp.model.Food;
+import com.cse5236.whatsfordinnerapp.model.User;
+import com.cse5236.whatsfordinnerapp.ui.AuthActivity;
 import com.cse5236.whatsfordinnerapp.ui.SettingsActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Fragment for Plate screen
@@ -43,7 +53,10 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
     private String[] currentPicks;
 
-    private Button mShuffleButton, mSettingsButton, mAboutButton;
+    private Button mShuffleButton, mSettingsButton, mAboutButton, mDeleteAccount;
+
+    //todo delete after checkpoint 4
+    FirebaseAuth mAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +68,8 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_plate, container, false);
+
+        mAuth = FirebaseAuth.getInstance();
 
         Activity activity = requireActivity();
         // original home code
@@ -74,6 +89,9 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
         mAboutButton = v.findViewById(R.id.aboutButton);
         mAboutButton.setOnClickListener(this);
+
+        mDeleteAccount = v.findViewById(R.id.delete_account_button);
+        mDeleteAccount.setOnClickListener(this);
 
         return v;
     }
@@ -121,6 +139,35 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
             case R.id.aboutButton:
                 //TODO
                 break;
+            case R.id.delete_account_button:
+                //todo delete after checkpoint 4
+                DatabaseReference Fb = databaseHelper.getDatabase().getReference("Users");
+                final String userId = mAuth.getCurrentUser().getUid();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                Fb.child(userId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        Activity activity = requireActivity();
+                                        Toast.makeText(activity, "User Deleted", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(activity, AuthActivity.class));
+                                        activity.finish();
+                                    } else {
+                                        Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }else{
+                            Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                    break;
             default:
                 break;
         }

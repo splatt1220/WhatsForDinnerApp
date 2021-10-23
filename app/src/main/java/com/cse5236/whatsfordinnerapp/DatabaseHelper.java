@@ -21,6 +21,10 @@ public class DatabaseHelper {
         return foods;
     }
 
+    public FirebaseDatabase getDatabase() {
+        return mDatabase;
+    }
+
     public DatabaseHelper() {
         mDatabase = FirebaseDatabase.getInstance();
         mReferenceFoods = mDatabase.getReference("Foods");
