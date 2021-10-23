@@ -1,6 +1,7 @@
-package com.cse5236.whatsfordinnerapp;
+package com.cse5236.whatsfordinnerapp.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cse5236.whatsfordinnerapp.DatabaseHelper;
+import com.cse5236.whatsfordinnerapp.R;
+import com.cse5236.whatsfordinnerapp.Utils;
 import com.cse5236.whatsfordinnerapp.model.Food;
 
 import java.util.ArrayList;
@@ -20,7 +24,7 @@ import java.util.List;
 
 /**
  * Fragment for Plate screen
- *
+ * <p>
  * based on adamcchampion's LoginFragment
  */
 public class PlateFragment extends Fragment implements View.OnClickListener {
@@ -38,10 +42,12 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
     private String[] currentPicks;
 
+    private Button mShuffleButton, mSettingsButton, mAboutButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"onCreate");
+        Log.d(TAG, "onCreate");
     }
 
     @Nullable
@@ -59,15 +65,22 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
         currentPicks = new String[5];
 
-        Button shuffleButton = v.findViewById(R.id.shuffleButton);
-        shuffleButton.setOnClickListener(this);
+        mShuffleButton = v.findViewById(R.id.shuffleButton);
+        mShuffleButton.setOnClickListener(this);
+
+        mSettingsButton = v.findViewById(R.id.settingsButton);
+        mSettingsButton.setOnClickListener(this);
+
+        mAboutButton = v.findViewById(R.id.aboutButton);
+        mAboutButton.setOnClickListener(this);
 
         return v;
     }
+
     @Override
     public void onStart() {
         super.onStart();
-            // this needs to be adjusted once we figure out how to add persistence
+        // this needs to be adjusted once we figure out how to add persistence
 //        currentPicks[0] = getString(R.string.fruit_text);
 //        fruit.setText(currentPicks[0]);
 //        currentPicks[1] = getString(R.string.grain_text);
@@ -83,35 +96,51 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG,"onResume");
+        Log.d(TAG, "onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d(TAG,"onPause");
+        Log.d(TAG, "onPause");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"onDestroy");
+        Log.d(TAG, "onDestroy");
     }
 
 
     @Override
     public void onClick(View view) {
-        foods = databaseHelper.getFoods();
+        Activity activity = requireActivity();
 
-        currentPicks[0] = getString(R.string.fruit_text, Utils.getRandomIngredient(foods, "Fruit"));
-        fruit.setText(currentPicks[0]);
-        currentPicks[1] = getString(R.string.grain_text, Utils.getRandomIngredient(foods, "Grain"));
-        grain.setText(currentPicks[1]);
-        currentPicks[2] = getString(R.string.vegetable_text, Utils.getRandomIngredient(foods, "Vegetable"));
-        vegetable.setText(currentPicks[2]);
-        currentPicks[3] = getString(R.string.protein_text, Utils.getRandomIngredient(foods, "Protein"));
-        protein.setText(currentPicks[3]);
-        currentPicks[4] =getString(R.string.dairy_text, Utils.getRandomIngredient(foods, "Dairy"));
-        dairy.setText(currentPicks[4]);
+        switch (view.getId()) {
+            case R.id.shuffleButton:
+                foods = databaseHelper.getFoods();
+
+                currentPicks[0] = getString(R.string.fruit_text, Utils.getRandomIngredient(foods, "Fruit"));
+                fruit.setText(currentPicks[0]);
+                currentPicks[1] = getString(R.string.grain_text, Utils.getRandomIngredient(foods, "Grain"));
+                grain.setText(currentPicks[1]);
+                currentPicks[2] = getString(R.string.vegetable_text, Utils.getRandomIngredient(foods, "Vegetable"));
+                vegetable.setText(currentPicks[2]);
+                currentPicks[3] = getString(R.string.protein_text, Utils.getRandomIngredient(foods, "Protein"));
+                protein.setText(currentPicks[3]);
+                currentPicks[4] = getString(R.string.dairy_text, Utils.getRandomIngredient(foods, "Dairy"));
+                dairy.setText(currentPicks[4]);
+
+                break;
+            case R.id.settingsButton:
+                startActivity(new Intent(activity, SettingsActivity.class));
+
+                break;
+            case R.id.aboutButton:
+//                startActivity(new Intent(activity, AboutActivity.class));
+                break;
+            default:
+                break;
+        }
     }
 }

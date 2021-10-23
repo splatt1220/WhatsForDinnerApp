@@ -1,4 +1,4 @@
-package com.cse5236.whatsfordinnerapp;
+package com.cse5236.whatsfordinnerapp.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.cse5236.whatsfordinnerapp.R;
 import com.cse5236.whatsfordinnerapp.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -70,14 +71,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         String name = mName.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
 
-        //TODO make sure name is not empty
-        //TODO make sure password >6 characters
-        if(password.isEmpty()){
-            mPassword.setError("Please enter a password");
+        if (name.isEmpty()) {
+            mName.setError("Please enter your name");
+            mName.requestFocus();
+        }
+        if(password.isEmpty() || password.length() < 6){
+            mPassword.setError("Please enter a valid password");
             mPassword.requestFocus();
             return;
         }
-
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             mEmail.setError("Please give a valid email");
             mEmail.requestFocus();

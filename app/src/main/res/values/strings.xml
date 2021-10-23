@@ -13,4 +13,14 @@
     <string name="full_name">Full Name</string>
     <string name="email_enter">Email</string>
     <string name="password_hint">Password</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings_change_password_button">Change Password</string>
+    <string name="settings_update_dislikes_button">Update Dislikes</string>
+    <string name="settings_log_out_button">Log Out</string>
+    <string name="password_confirm_button">Confirm</string>
+    <string name="change_password_new_password_field">Enter your new password</string>
+    <string name="change_password_confirm_password_field">Confirm your new password</string>
+    <string name="change_password_old_password_field">Enter your current password</string>
+    <string name="forget_password_button">Forget Password</string>
+    <string name="forget_password_email_field">Enter your email</string>
 </resources>
