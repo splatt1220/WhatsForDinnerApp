@@ -23,4 +23,5 @@
     <string name="change_password_old_password_field">Enter your current password</string>
     <string name="forget_password_button">Forget Password</string>
     <string name="forget_password_email_field">Enter your email</string>
+    <string name="onStartText">Press Shuffle!</string>
 </resources>

@@ -21,23 +21,12 @@ public class DatabaseHelper {
         return foods;
     }
 
-    public interface dataStatus{
-        void DataIsLoaded(List<Food> foods);
-//        void DataIsInserted();
-//        void DataIsUpdated();
-//        void DataIsDeleted();
-    }
-
     public DatabaseHelper() {
         mDatabase = FirebaseDatabase.getInstance();
         mReferenceFoods = mDatabase.getReference("Foods");
         readFoods();
     }
 
-
-    //    public void getReadFoods(){
-//        System.out.println(mReferenceFoods.get().toString());
-//    }
     private void readFoods(){
         mReferenceFoods.addValueEventListener(new ValueEventListener() {
             @Override
@@ -49,8 +38,6 @@ public class DatabaseHelper {
                     Food food = keyNode.getValue(Food.class);
                     foods.add(food);
                 }
-//                listener.DataIsLoaded(foods);
-
             }
 
             @Override
