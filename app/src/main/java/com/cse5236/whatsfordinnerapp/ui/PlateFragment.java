@@ -18,6 +18,7 @@ import com.cse5236.whatsfordinnerapp.DatabaseHelper;
 import com.cse5236.whatsfordinnerapp.R;
 import com.cse5236.whatsfordinnerapp.Utils;
 import com.cse5236.whatsfordinnerapp.model.Food;
+import com.cse5236.whatsfordinnerapp.ui.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;

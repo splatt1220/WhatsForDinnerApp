@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.cse5236.whatsfordinnerapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 /*
  * view of setting options
@@ -24,6 +25,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
 
     private Button mChangePasswordButton, mUpdateDislikesButton, mLogOutButton;
+
+    private FirebaseAuth mAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        mAuth = FirebaseAuth.getInstance();
+
         mChangePasswordButton = v.findViewById(R.id.btn_settings_change_password);
         mChangePasswordButton.setOnClickListener(this);
 
@@ -76,7 +81,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 // todo
                 break;
             case R.id.btn_settings_log_out:
-                // todo
+                mAuth.signOut();
+                startActivity(new Intent(activity, AuthActivity.class));
+                activity.finish();
                 break;
             default:
                 Log.d(TAG, "No matched button. ");
