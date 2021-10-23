@@ -1,12 +1,9 @@
-package com.cse5236.whatsfordinnerapp;
+package com.cse5236.whatsfordinnerapp.ui;
 
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.constraintlayout.motion.widget.Debug;
 import androidx.fragment.app.Fragment;
-
-import com.cse5236.whatsfordinnerapp.ui.SingleFragmentActivity;
 
 /**
  * Activity for Plate interaction

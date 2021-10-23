@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cse5236.whatsfordinnerapp.DatabaseHelper;
+import com.cse5236.whatsfordinnerapp.R;
+import com.cse5236.whatsfordinnerapp.Utils;
 import com.cse5236.whatsfordinnerapp.model.Food;
 
 import java.util.ArrayList;
@@ -37,11 +40,9 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     private TextView protein;
     private TextView dairy;
 
-    private Button shuffleButton;
-    private Button settingsButton;
-    private Button aboutButton;
-
     private String[] currentPicks;
+
+    private Button mShuffleButton, mSettingsButton, mAboutButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,17 +65,18 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
         currentPicks = new String[5];
 
-        shuffleButton = v.findViewById(R.id.shuffleButton);
-        shuffleButton.setOnClickListener(this);
+        mShuffleButton = v.findViewById(R.id.shuffleButton);
+        mShuffleButton.setOnClickListener(this);
 
-        settingsButton = v.findViewById(R.id.settingsButton);
-        settingsButton.setOnClickListener(this);
+        mSettingsButton = v.findViewById(R.id.settingsButton);
+        mSettingsButton.setOnClickListener(this);
 
-        aboutButton = v.findViewById(R.id.aboutButton);
-        aboutButton.setOnClickListener(this);
+        mAboutButton = v.findViewById(R.id.aboutButton);
+        mAboutButton.setOnClickListener(this);
 
         return v;
     }
+
     @Override
     public void onStart() {
         super.onStart();
