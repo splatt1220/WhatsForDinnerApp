@@ -20,7 +20,7 @@ import com.cse5236.whatsfordinnerapp.R;
 import com.cse5236.whatsfordinnerapp.Utils;
 import com.cse5236.whatsfordinnerapp.model.Food;
 import com.cse5236.whatsfordinnerapp.model.User;
-import com.cse5236.whatsfordinnerapp.ui.AuthActivity;
+//import com.cse5236.whatsfordinnerapp.ui.AuthActivity;
 import com.cse5236.whatsfordinnerapp.ui.SettingsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,12 +33,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+//shake imports
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import java.util.Objects;
+
 /**
  * Fragment for Plate screen
  *
  * based on adamcchampion's LoginFragment
  */
 public class PlateFragment extends Fragment implements View.OnClickListener {
+    private SensorManager mSensorManager;
+    private float mAccel;
+    private float mAccelCurrent;
+    private float mAccelLast;
+//    shake variables end
     private final String TAG = getClass().getSimpleName();
 
     //package private scope probably
@@ -62,6 +75,13 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG,"onCreate");
+//        shake
+        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        Objects.requireNonNull(mSensorManager).registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        mAccel = 10f;
+        mAccelCurrent = SensorManager.GRAVITY_EARTH;
+        mAccelLast = SensorManager.GRAVITY_EARTH;
     }
 
     @Nullable
@@ -108,12 +128,17 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
+//        shake sensor
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL);
         super.onResume();
         Log.d(TAG,"onResume");
     }
 
     @Override
     public void onPause() {
+//        shake sensor
+        mSensorManager.unregisterListener(mSensorListener);
         super.onPause();
         Log.d(TAG,"onPause");
     }
@@ -188,4 +213,23 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
         currentPicks[4] =getString(R.string.dairy_text, Utils.getRandomIngredient(foods, "Dairy"));
         dairy.setText(currentPicks[4]);
     }
+
+    private final SensorEventListener mSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta;
+            if (mAccel > 12) {
+                Toast.makeText(getActivity().getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
+            }
+        }
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
 }
