@@ -225,7 +225,8 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta;
             if (mAccel > 12) {
-                Toast.makeText(getActivity().getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
+                shuffle();
             }
         }
         @Override
