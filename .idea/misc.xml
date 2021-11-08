@@ -4,9 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.29583333333333334" />
-        <entry key="..\:/OneDrive-OSU/Documents/Repos/AndroidStudio/WhatsForDinner/app/src/main/res/layout/activity_about_fragment.xml" value="0.39947916666666666" />
-        <entry key="..\:/OneDrive-OSU/Documents/Repos/AndroidStudio/WhatsForDinner/app/src/main/res/layout/fragment_auth.xml" value="0.9692832764505119" />
-        <entry key="..\:/OneDrive-OSU/Documents/Repos/AndroidStudio/WhatsForDinner/app/src/main/res/layout/fragment_plate.xml" value="0.39947916666666666" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/activity_auth.xml" value="0.19907407407407407" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/activity_auth_fragment.xml" value="0.19907407407407407" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/activity_change_password.xml" value="0.24583333333333332" />
@@ -16,6 +13,8 @@
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_plate.xml" value="0.25" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_register.xml" value="0.22" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_settings.xml" value="0.32037037037037036" />
+        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.1671195652173913" />
+        <entry key="app/src/main/res/layout/fragment_plate.xml" value="0.16168478260869565" />
       </map>
     </option>
   </component>
