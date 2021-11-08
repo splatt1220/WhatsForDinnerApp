@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsForDinnerApp">
         <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.SettingsActivity"/>
+        <activity
             android:name=".ui.ForgetPasswordActivity"
             android:exported="true"
             android:parentActivityName=".ui.AuthActivity" />

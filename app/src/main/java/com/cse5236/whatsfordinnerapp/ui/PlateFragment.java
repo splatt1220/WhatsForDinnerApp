@@ -162,7 +162,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(activity, SettingsActivity.class));
                 break; //test to see if you can hit back after logging out to break this
             case R.id.aboutButton:
-                //TODO
+                startActivity(new Intent(activity, AboutActivity.class));
                 break;
             case R.id.delete_account_button:
                 //todo delete after checkpoint 4
