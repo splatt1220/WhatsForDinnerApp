@@ -101,8 +101,8 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
         currentPicks = new String[5];
 
-        mShuffleButton = v.findViewById(R.id.shuffleButton);
-        mShuffleButton.setOnClickListener(this);
+//        mShuffleButton = v.findViewById(R.id.shuffleButton);
+//        mShuffleButton.setOnClickListener(this);
 
         mSettingsButton = v.findViewById(R.id.settingsButton);
         mSettingsButton.setOnClickListener(this);
