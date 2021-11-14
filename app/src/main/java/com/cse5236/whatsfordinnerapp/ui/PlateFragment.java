@@ -2,6 +2,7 @@ package com.cse5236.whatsfordinnerapp.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,11 +40,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+
 import java.util.Objects;
 
 /**
  * Fragment for Plate screen
- *
+ * <p>
  * based on adamcchampion's LoginFragment
  */
 public class PlateFragment extends Fragment implements View.OnClickListener {
@@ -51,7 +53,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     private float mAccel;
     private float mAccelCurrent;
     private float mAccelLast;
-//    shake variables end
+    //    shake variables end
     private final String TAG = getClass().getSimpleName();
 
     //package private scope probably
@@ -74,7 +76,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"onCreate");
+        Log.d(TAG, "onCreate");
 //        shake
         mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         Objects.requireNonNull(mSensorManager).registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
@@ -132,7 +134,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
         mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
         super.onResume();
-        Log.d(TAG,"onResume");
+        Log.d(TAG, "onResume");
     }
 
     @Override
@@ -140,13 +142,13 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 //        shake sensor
         mSensorManager.unregisterListener(mSensorListener);
         super.onPause();
-        Log.d(TAG,"onPause");
+        Log.d(TAG, "onPause");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"onDestroy");
+        Log.d(TAG, "onDestroy");
     }
 
 
@@ -172,11 +174,11 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
                 Fb.child(userId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()) {
+                                    if (task.isSuccessful()) {
                                         Activity activity = requireActivity();
                                         Toast.makeText(activity, "User Deleted", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(activity, AuthActivity.class));
@@ -186,13 +188,23 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
                                     }
                                 }
                             });
-                        }else{
+                        } else {
                             Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
-                    break;
+                break;
+            case R.id.fruitText:
+//                find the name of the fruit currently displayed
+                String fruitName = currentPicks[0];
+//                look up the database for the fruit with that name
+                foods = databaseHelper.getFoods();
+                String fruitLink = Utils.getFoodLink(foods, fruitName);
+                Intent openBrowserLink = new Intent(Intent.ACTION_VIEW);
+                openBrowserLink.setData(Uri.parse(fruitLink));
+                startActivity(openBrowserLink);
+                break;
             default:
                 break;
         }
@@ -210,7 +222,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
         vegetable.setText(currentPicks[2]);
         currentPicks[3] = getString(R.string.protein_text, Utils.getRandomIngredient(foods, "Protein"));
         protein.setText(currentPicks[3]);
-        currentPicks[4] =getString(R.string.dairy_text, Utils.getRandomIngredient(foods, "Dairy"));
+        currentPicks[4] = getString(R.string.dairy_text, Utils.getRandomIngredient(foods, "Dairy"));
         dairy.setText(currentPicks[4]);
     }
 
@@ -229,6 +241,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
                 shuffle();
             }
         }
+
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }

@@ -22,8 +22,8 @@ public class Utils {
     public static String getRandomIngredient(List<Food> foodList, String foodType) {
         Random rand = new Random();
         List<String> nameList = new ArrayList<>();
-        for(Food food : foodList){
-            if (food.getFood_type().equals(foodType)){
+        for (Food food : foodList) {
+            if (food.getFood_type().equals(foodType)) {
                 nameList.add(food.getFood_name());
             }
         }
@@ -33,5 +33,17 @@ public class Utils {
 
         return result;
     }
+
+    public static String getFoodLink(List<Food> foodList, String fruitName) {
+        String link = "";
+        for (Food food : foodList) {
+            if (food.getFood_name().equals(fruitName)) {
+                link = food.getFood_link();
+            }
+        }
+        return link;
+    }
+
+
 }
 
