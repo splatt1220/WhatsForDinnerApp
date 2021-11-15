@@ -110,8 +110,8 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
         mAboutButton = v.findViewById(R.id.aboutButton);
         mAboutButton.setOnClickListener(this);
 
-        mDeleteAccount = v.findViewById(R.id.delete_account_button);
-        mDeleteAccount.setOnClickListener(this);
+//        mDeleteAccount = v.findViewById(R.id.delete_account_button);
+//        mDeleteAccount.setOnClickListener(this);
 
         return v;
     }
@@ -155,44 +155,44 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
         final int viewId = view.getId();
         Activity activity = requireActivity();
         switch (viewId) {
-            case R.id.shuffleButton:
-                shuffle();
-                break;
+//            case R.id.shuffleButton:
+//                shuffle();
+//                break;
             case R.id.settingsButton:
                 startActivity(new Intent(activity, SettingsActivity.class));
                 break; //test to see if you can hit back after logging out to break this
             case R.id.aboutButton:
                 startActivity(new Intent(activity, AboutActivity.class));
                 break;
-            case R.id.delete_account_button:
-                //todo delete after checkpoint 4
-                DatabaseReference Fb = databaseHelper.getDatabase().getReference("Users");
-                final String userId = mAuth.getCurrentUser().getUid();
-                FirebaseUser currentUser = mAuth.getCurrentUser();
-                Fb.child(userId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()) {
-                                        Activity activity = requireActivity();
-                                        Toast.makeText(activity, "User Deleted", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(activity, AuthActivity.class));
-                                        activity.finish();
-                                    } else {
-                                        Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }else{
-                            Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-                    break;
+//            case R.id.delete_account_button:
+//                //todo delete after checkpoint 4
+//                DatabaseReference Fb = databaseHelper.getDatabase().getReference("Users");
+//                final String userId = mAuth.getCurrentUser().getUid();
+//                FirebaseUser currentUser = mAuth.getCurrentUser();
+//                Fb.child(userId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    if(task.isSuccessful()) {
+//                                        Activity activity = requireActivity();
+//                                        Toast.makeText(activity, "User Deleted", Toast.LENGTH_SHORT).show();
+//                                        startActivity(new Intent(activity, AuthActivity.class));
+//                                        activity.finish();
+//                                    } else {
+//                                        Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//                            });
+//                        }else{
+//                            Toast.makeText(activity, "Error Deleting User", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//
+//                    break;
             default:
                 break;
         }

@@ -25,15 +25,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/btn_settings_update_dislikes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/settings_update_dislikes_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_settings_change_password" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_settings_update_dislikes"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="@string/settings_update_dislikes_button"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn_settings_change_password" />-->
 
     <Button
         android:id="@+id/btn_settings_log_out"
@@ -43,6 +43,6 @@
         android:text="@string/settings_log_out_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_settings_update_dislikes" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_settings_change_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

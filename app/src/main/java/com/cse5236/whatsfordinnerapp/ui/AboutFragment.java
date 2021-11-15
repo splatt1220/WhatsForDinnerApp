@@ -20,7 +20,7 @@ public class AboutFragment extends Fragment{
     private TextView mAboutText;
     private String mText =
             "Shake the phone and you will get a new plate. " +
-            "In Setting menu you can change your password and update your disliked foods. " +
+            "In Setting menu you can change your password. " +
             "\n\nCAUTION: QUALITY OF MEAL IS NOT GUARANTEED! " +
             "\n\n\nBy: Zahur Elmi, Sarah Platt, Baihua Yang";
 

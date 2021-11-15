@@ -61,8 +61,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         mChangePasswordButton = v.findViewById(R.id.btn_settings_change_password);
         mChangePasswordButton.setOnClickListener(this);
 
-        mUpdateDislikesButton = v.findViewById(R.id.btn_settings_update_dislikes);
-        mUpdateDislikesButton.setOnClickListener(this);
+//        mUpdateDislikesButton = v.findViewById(R.id.btn_settings_update_dislikes);
+//        mUpdateDislikesButton.setOnClickListener(this);
 
         mLogOutButton = v.findViewById(R.id.btn_settings_log_out);
         mLogOutButton.setOnClickListener(this);
@@ -77,9 +77,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_settings_change_password:
                 startActivity(new Intent(activity, ChangePasswordActivity.class));
                 break;
-            case R.id.btn_settings_update_dislikes:
-                // todo
-                break;
+//            case R.id.btn_settings_update_dislikes:
+//                // todo
+//                break;
             case R.id.btn_settings_log_out:
                 mAuth.signOut();
                 startActivity(new Intent(activity, AuthActivity.class));
