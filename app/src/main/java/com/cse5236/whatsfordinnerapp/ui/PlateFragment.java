@@ -69,6 +69,7 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
     private String[] currentPicks;
 
     private Button mShuffleButton, mSettingsButton, mAboutButton, mDeleteAccount;
+    private TextView mFruitText;
 
     //todo delete after checkpoint 4
     FirebaseAuth mAuth;
@@ -114,6 +115,9 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 
         mDeleteAccount = v.findViewById(R.id.delete_account_button);
         mDeleteAccount.setOnClickListener(this);
+
+        mFruitText = v.findViewById(R.id.fruitText);
+        mFruitText.setOnClickListener(this);
 
         return v;
     }
@@ -201,7 +205,8 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
 //                look up the database for the fruit with that name
                 foods = databaseHelper.getFoods();
                 String fruitLink = Utils.getFoodLink(foods, fruitName);
-                Intent openBrowserLink = new Intent(Intent.ACTION_VIEW);
+//                String fruitLink = "http://www.google.com";
+                        Intent openBrowserLink = new Intent(Intent.ACTION_VIEW);
                 openBrowserLink.setData(Uri.parse(fruitLink));
                 startActivity(openBrowserLink);
                 break;

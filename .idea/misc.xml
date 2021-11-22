@@ -13,8 +13,10 @@
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_plate.xml" value="0.25" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_register.xml" value="0.22" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_settings.xml" value="0.32037037037037036" />
-        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.1671195652173913" />
-        <entry key="app/src/main/res/layout/fragment_plate.xml" value="0.16168478260869565" />
+        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.21281986906974776" />
+        <entry key="app/src/main/res/layout/fragment_plate.xml" value="0.7641604204376751" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.20606884057971014" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.20606884057971014" />
       </map>
     </option>
   </component>
