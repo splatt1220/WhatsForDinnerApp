@@ -64,7 +64,9 @@ public class AuthFragment extends Fragment implements View.OnClickListener {
         Activity activity = requireActivity();
         switch (view.getId()) {
             case R.id.loginButton:
-                userLogin();
+                String email = mEmail.getText().toString().trim();
+                String password = mPassword.getText().toString().trim();
+                userLogin(email, password);
                 break;
             case R.id.registerButton:
                 startActivity(new Intent(activity, RegisterActivity.class));
@@ -77,25 +79,23 @@ public class AuthFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void userLogin() {
-        String email = mEmail.getText().toString().trim();
-        String password = mPassword.getText().toString().trim();
+    public boolean userLogin(String email, String password) {
 
         if (email.isEmpty()) {
             mEmail.setError("Email is required");
             mEmail.requestFocus();
-            return;
+            return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             mEmail.setError("Please enter a valid email");
             mEmail.requestFocus();
-            return;
+            return false;
         }
 
         if (password.isEmpty() || password.length() < 6) {
             mPassword.setError("Password is not valid");
             mPassword.requestFocus();
-            return;
+            return false;
         }
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -111,6 +111,7 @@ public class AuthFragment extends Fragment implements View.OnClickListener {
                 }
             }
         });
+        return true;
     }
 
 }
