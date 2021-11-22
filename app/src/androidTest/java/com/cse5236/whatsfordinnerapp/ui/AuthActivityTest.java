@@ -14,6 +14,7 @@ public class AuthActivityTest extends TestCase {
     }
 
     @Test
+    // test with an empty email
     public void testEmptyEmail() {
         fragmentScenario.onFragment(fragment -> {
             String email = "";
@@ -23,6 +24,7 @@ public class AuthActivityTest extends TestCase {
     }
 
     @Test
+    // test with an invalid email
     public void testInvalidEmail() {
         fragmentScenario.onFragment(fragment -> {
             String email = "1";
@@ -32,6 +34,7 @@ public class AuthActivityTest extends TestCase {
     }
 
     @Test
+    // test with an empty password
     public void testEmptyPwd() {
         fragmentScenario.onFragment(fragment -> {
             String email = "t@1.com";
@@ -41,6 +44,7 @@ public class AuthActivityTest extends TestCase {
     }
 
     @Test
+    // test with an invalid password
     public void testInvalidPwd() {
         fragmentScenario.onFragment(fragment -> {
             String email = "t@1.com";
@@ -50,6 +54,7 @@ public class AuthActivityTest extends TestCase {
     }
 
     @Test
+    // test with valid email and password
     public void testValid() {
         fragmentScenario.onFragment(fragment -> {
             String email = "t@1.com";
