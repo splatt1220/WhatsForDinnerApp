@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cse5236.whatsfordinnerapp.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 /*
@@ -27,8 +25,7 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
 
     private FirebaseAuth mAuth;
 
-    private EditText mEmail, mNewPassword, mConfirmPassword;
-    private Button mConfirmButton;
+    private EditText mEmail;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,12 +39,10 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
 
-        mEmail =  v.findViewById(R.id.et_forget_password_email);
-        mNewPassword = v.findViewById(R.id.et_forget_password_new_password);
-        mConfirmPassword = v.findViewById(R.id.et_forget_password_confirm_password);
+        mEmail = v.findViewById(R.id.et_forget_password_email);
 
-        mConfirmButton = v.findViewById(R.id.btn_forget_password_confirm);
-        mConfirmButton.setOnClickListener(this);
+        Button mConfirm = v.findViewById(R.id.btn_forget_password_confirm);
+        mConfirm.setOnClickListener(this);
 
         return v;
     }
@@ -55,47 +50,27 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_forget_password_confirm) {
-            forgetPassword();
+            String email = mEmail.getText().toString();
+            forgetPassword(email);
         }
     }
 
-    private void forgetPassword() {
-        String email = mEmail.getText().toString();
-        String newPassword = mNewPassword.getText().toString();
-        String confirmPassword = mConfirmPassword.getText().toString();
+    public boolean forgetPassword(String email) {
 
-        if (email == null || email.isEmpty()) {
+        if (email.isEmpty()) {
             mEmail.setError("Email is not valid");
             mEmail.requestFocus();
-            return;
-        }
-        if (newPassword == null || newPassword.isEmpty()) {
-            mNewPassword.setError("Please enter your new password");
-            mNewPassword.requestFocus();
-            return;
-        }
-        if (confirmPassword == null || confirmPassword.isEmpty()) {
-            mConfirmPassword.setError("Please confirm your new password");
-            mConfirmPassword.requestFocus();
-            return;
-        }
-        if (!newPassword.equals(confirmPassword)) {
-            mConfirmPassword.setError("Password confirmation doesn't match the password");
-            mConfirmPassword.requestFocus();
-            return;
+            return false;
         }
 
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if (task.isSuccessful()) {
-                    Toast.makeText(requireContext(), "Check your email to reset your password", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(requireContext(), "Error, please try again", Toast.LENGTH_SHORT).show();
-                }
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(requireContext(), "Check your email to reset your password", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(requireContext(), "Error, please try again", Toast.LENGTH_SHORT).show();
             }
         });
+        return true;
     }
+
 }
