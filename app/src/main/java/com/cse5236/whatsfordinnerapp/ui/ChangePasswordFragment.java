@@ -16,12 +16,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cse5236.whatsfordinnerapp.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 /*
  * change password by verifying current password
@@ -30,11 +30,10 @@ import com.google.firebase.auth.FirebaseUser;
 public class ChangePasswordFragment extends Fragment implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
 
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
     private EditText mOldPassword, mNewPassword, mConfirmPassword;
-    private Button mConfirmButton;
     private String mEmail;
 
 
@@ -50,13 +49,13 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mEmail = mUser.getEmail();
+        mEmail = Objects.requireNonNull(mUser).getEmail();
 
         mOldPassword = v.findViewById(R.id.et_change_password_old_password);
         mNewPassword = v.findViewById(R.id.et_change_password_new_password);
         mConfirmPassword = v.findViewById(R.id.et_change_password_confirm_password);
 
-        mConfirmButton = v.findViewById(R.id.btn_change_password_confirm);
+        Button mConfirmButton = v.findViewById(R.id.btn_change_password_confirm);
         mConfirmButton.setOnClickListener(this);
 
         return v;
@@ -65,59 +64,51 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_change_password_confirm) {
-            changePassword();
+            String oldPassword = mOldPassword.getText().toString();
+            String newPassword = mNewPassword.getText().toString();
+            String confirmPassword = mConfirmPassword.getText().toString();
+            changePassword(oldPassword, newPassword, confirmPassword);
         }
     }
 
-    private void changePassword() {
-        String oldPassword = mOldPassword.getText().toString();
-        String newPassword = mNewPassword.getText().toString();
-        String confirmPassword = mConfirmPassword.getText().toString();
-
-        if (oldPassword == null || oldPassword.isEmpty()) {
+    public boolean changePassword(String oldPassword, String newPassword, String confirmPassword) {
+        if (oldPassword.isEmpty()) {
             mOldPassword.setError("Please enter your current password");
             mOldPassword.requestFocus();
-            return;
+            return false;
         }
-        if (newPassword == null || newPassword.isEmpty()) {
+        if (newPassword.isEmpty()) {
             mNewPassword.setError("Please enter your new password");
             mNewPassword.requestFocus();
-            return;
+            return false;
         }
-        if (confirmPassword == null || confirmPassword.isEmpty()) {
+        if (confirmPassword.isEmpty()) {
             mConfirmPassword.setError("Please confirm your new password");
             mConfirmPassword.requestFocus();
-            return;
+            return false;
         }
         if (!newPassword.equals(confirmPassword)) {
             mConfirmPassword.setError("Password confirmation doesn't match the password");
             mConfirmPassword.requestFocus();
-            return;
+            return false;
         }
 
         AuthCredential credential = EmailAuthProvider.getCredential(mEmail, oldPassword);
-        mUser.reauthenticate(credential)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            mUser.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(requireContext(), "Password updated", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(requireActivity(), SettingsActivity.class));
-                                    } else {
-                                        Toast.makeText(requireContext(), "Error, password not updated", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        } else {
-                            mOldPassword.setError("Password is not correct");
-                            mOldPassword.requestFocus();
-                        }
+        mUser.reauthenticate(credential).addOnCompleteListener(reauth -> {
+            if (reauth.isSuccessful()) {
+                mUser.updatePassword(newPassword).addOnCompleteListener(update -> {
+                    if (update.isSuccessful()) {
+                        Toast.makeText(requireContext(), "Password updated", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(requireActivity(), SettingsActivity.class));
+                    } else {
+                        Toast.makeText(requireContext(), "Error, password not updated", Toast.LENGTH_SHORT).show();
                     }
                 });
-
+            } else {
+                mOldPassword.setError("Password is not correct");
+                mOldPassword.requestFocus();
+            }
+        });
+        return true;
     }
 }
