@@ -16,6 +16,21 @@
 <!--        app:layout_constraintBottom_toTopOf="@+id/settingsButton"-->
 <!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        android:background="#3AB795"
+        android:maxHeight="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:logo="@drawable/logo_40"
+        app:title="What's For Dinner?"
+        app:titleTextColor="@color/white" />
+
     <TextView
         android:id="@+id/fruitText"
         android:layout_width="200dp"
@@ -115,7 +130,9 @@
         android:background="@drawable/plate_page_buttons"
         android:textAllCaps="false"/>
 
-<!--    <Button-->
+
+
+    <!--    <Button-->
 <!--        android:id="@+id/delete_account_button"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
