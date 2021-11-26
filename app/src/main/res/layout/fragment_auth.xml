@@ -30,72 +30,83 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.346" />
+        app:layout_constraintVertical_bias="0.217"
+        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/emailField"
-        android:layout_width="335dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="292dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="260dp"
         android:ems="10"
         android:hint="@string/email_enter"
         android:inputType="textEmailAddress"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/passwordField"
-        android:layout_width="335dp"
-        android:layout_height="48dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailField" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="335dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/main_button"
         android:text="@string/login_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordField" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordField"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_height="48dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/main_button"
         android:backgroundTint="#3AB795"
         android:text="@string/reg_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        android:layout_width="335dp"
-        android:background="@drawable/main_button"/>
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/forgetPasswordButton"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/forgot_pass_button"
         android:text="@string/forget_password_button"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="5sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        android:background="@drawable/forgot_pass_button"
-        />
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

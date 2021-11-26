@@ -17,8 +17,18 @@
 <!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="409dp"
+        android:layout_height="48dp"
+        android:background="#3AB795"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="412dp"
+        android:layout_width="350dp"
         android:layout_height="48dp"
         android:background="#3AB795"
         android:maxHeight="?attr/actionBarSize"
@@ -129,7 +139,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/plate_page_buttons"
         android:textAllCaps="false"/>
-
 
 
     <!--    <Button-->
