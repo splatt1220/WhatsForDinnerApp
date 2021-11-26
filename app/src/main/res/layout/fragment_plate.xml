@@ -18,7 +18,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="409dp"
+        android:layout_width="412dp"
         android:layout_height="48dp"
         android:background="#3AB795"
         android:maxHeight="?attr/actionBarSize"
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@drawable/logo_40"
-        app:title="What's For Dinner?"
+        app:title="             What's For Dinner?"
         app:titleTextColor="@color/white" />
 
     <TextView
