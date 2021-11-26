@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/TextName"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="219dp"
         android:ems="10"
@@ -32,7 +32,7 @@
 
     <EditText
         android:id="@+id/TextEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="274dp"
         android:ems="10"
@@ -45,7 +45,7 @@
 
     <EditText
         android:id="@+id/TextPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="327dp"
         android:ems="10"
@@ -59,14 +59,16 @@
 
     <Button
         android:id="@+id/registeringButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
         android:layout_marginTop="417dp"
         android:text="@string/reg_button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/main_button"/>
 
 
 
