@@ -19,10 +19,13 @@ public class AboutFragment extends Fragment{
     //private scope info
     private TextView mAboutText;
     private String mText =
-            "Shake the phone and you will get a new plate. " +
-            "In Setting menu you can change your password. " +
+            "What's for Dinner is an app to help you decide your next meal!" +
+                    "\nJust shake your phone and you will get a new plate. " +
+            "In the settings menu you can change your password. " +
             "\n\nCAUTION: QUALITY OF MEAL IS NOT GUARANTEED! " +
-            "\n\n\nBy: Zahur Elmi, Sarah Platt, Baihua Yang";
+            "\n\nBy: Zehur Elmi," +
+                    "\nSarah Platt and " +
+                    "\nBaihua Yang";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
