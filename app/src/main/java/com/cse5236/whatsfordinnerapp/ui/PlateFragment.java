@@ -214,23 +214,32 @@ public class PlateFragment extends Fragment implements View.OnClickListener {
         dairy.setText(currentPicks[4]);
     }
 
-    private final SensorEventListener mSensorListener = new SensorEventListener() {
+    public final SensorEventListener mSensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            float x = event.values[0];
-            float y = event.values[1];
-            float z = event.values[2];
-            mAccelLast = mAccelCurrent;
-            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
-            float delta = mAccelCurrent - mAccelLast;
-            mAccel = mAccel * 0.9f + delta;
-            if (mAccel > 12) {
-//                Toast.makeText(getActivity().getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
-                shuffle();
-            }
+            sensorChanged(event.values);
         }
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
     };
+
+    public boolean sensorChanged(float[] values) {
+        float x = values[0];
+        float y = values[1];
+        float z = values[2];
+
+        mAccelLast = mAccelCurrent;
+        mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+        float delta = mAccelCurrent - mAccelLast;
+        mAccel = mAccel * 0.9f + delta;
+        if (mAccel > 12) {
+//                Toast.makeText(getActivity().getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
+            shuffle();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

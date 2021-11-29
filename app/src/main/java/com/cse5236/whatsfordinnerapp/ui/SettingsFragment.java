@@ -89,7 +89,10 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 Log.d(TAG, "No matched button. ");
                 break;
         }
+    }
 
+    public FirebaseAuth getAuth() {
+        return mAuth;
     }
 
 }
