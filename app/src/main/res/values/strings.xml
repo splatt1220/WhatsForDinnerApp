@@ -21,7 +21,7 @@
     <string name="change_password_new_password_field">Enter your new password</string>
     <string name="change_password_confirm_password_field">Confirm your new password</string>
     <string name="change_password_old_password_field">Enter your current password</string>
-    <string name="forget_password_button">Forget Password</string>
+    <string name="forget_password_button">forgot password</string>
     <string name="forget_password_email_field">Enter your email</string>
     <string name="onStartText">Shake The Phone!</string>
 </resources>
