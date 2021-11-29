@@ -10,22 +10,13 @@
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/activity_fragment.xml" value="0.3380208333333333" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_auth.xml" value="0.33" />
+        <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_change_password.xml" value="0.2911458333333333" />
+        <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_forget_password.xml" value="0.2911458333333333" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_plate.xml" value="0.25" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_register.xml" value="0.22" />
         <entry key="..\:/Program Files/WhatsForDinnerApp/app/src/main/res/layout/fragment_settings.xml" value="0.32037037037037036" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2359375" />
-        <entry key="app/src/main/res/drawable/forgot_pass_button.xml" value="0.24947916666666667" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2359375" />
-        <entry key="app/src/main/res/drawable/main_button.xml" value="0.3260416666666667" />
-        <entry key="app/src/main/res/drawable/plate_page_buttons.xml" value="0.23177083333333334" />
-        <entry key="app/src/main/res/drawable/plate_page_text_areas.xml" value="0.3260416666666667" />
-        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.1766304347826087" />
-        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.24987195756221864" />
-        <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.18658277062008385" />
-        <entry key="app/src/main/res/layout/fragment_forget_password.xml" value="0.1766304347826087" />
-        <entry key="app/src/main/res/layout/fragment_plate.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1766304347826087" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1766304347826087" />
+        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.1671195652173913" />
+        <entry key="app/src/main/res/layout/fragment_plate.xml" value="0.16168478260869565" />
       </map>
     </option>
   </component>

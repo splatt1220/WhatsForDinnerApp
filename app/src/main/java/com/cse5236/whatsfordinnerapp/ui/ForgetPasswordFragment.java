@@ -27,7 +27,8 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
 
     private FirebaseAuth mAuth;
 
-    private EditText mEmail, mNewPassword, mConfirmPassword;
+    private EditText mEmail;
+
     private Button mConfirmButton;
 
     @Override
@@ -43,8 +44,6 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
 
         mEmail =  v.findViewById(R.id.et_forget_password_email);
-        mNewPassword = v.findViewById(R.id.et_forget_password_new_password);
-        mConfirmPassword = v.findViewById(R.id.et_forget_password_confirm_password);
 
         mConfirmButton = v.findViewById(R.id.btn_forget_password_confirm);
         mConfirmButton.setOnClickListener(this);
@@ -61,27 +60,10 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
 
     private void forgetPassword() {
         String email = mEmail.getText().toString();
-        String newPassword = mNewPassword.getText().toString();
-        String confirmPassword = mConfirmPassword.getText().toString();
 
         if (email == null || email.isEmpty()) {
             mEmail.setError("Email is not valid");
             mEmail.requestFocus();
-            return;
-        }
-        if (newPassword == null || newPassword.isEmpty()) {
-            mNewPassword.setError("Please enter your new password");
-            mNewPassword.requestFocus();
-            return;
-        }
-        if (confirmPassword == null || confirmPassword.isEmpty()) {
-            mConfirmPassword.setError("Please confirm your new password");
-            mConfirmPassword.requestFocus();
-            return;
-        }
-        if (!newPassword.equals(confirmPassword)) {
-            mConfirmPassword.setError("Password confirmation doesn't match the password");
-            mConfirmPassword.requestFocus();
             return;
         }
 
