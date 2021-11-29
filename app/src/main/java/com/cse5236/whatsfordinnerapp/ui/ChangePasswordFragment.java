@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -35,6 +36,7 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
 
     private EditText mOldPassword, mNewPassword, mConfirmPassword;
     private String mEmail;
+    private Toolbar mtoolbar1, mtoolbar2;
 
 
     @Override
@@ -54,6 +56,8 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
         mOldPassword = v.findViewById(R.id.et_change_password_old_password);
         mNewPassword = v.findViewById(R.id.et_change_password_new_password);
         mConfirmPassword = v.findViewById(R.id.et_change_password_confirm_password);
+        mtoolbar1 = v.findViewById(R.id.toolbar3);
+        mtoolbar2 = v.findViewById(R.id.toolbar2);
 
         Button mConfirmButton = v.findViewById(R.id.btn_change_password_confirm);
         mConfirmButton.setOnClickListener(this);
