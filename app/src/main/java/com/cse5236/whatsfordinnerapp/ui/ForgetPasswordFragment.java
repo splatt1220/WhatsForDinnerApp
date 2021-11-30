@@ -64,6 +64,7 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
         }
 
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+            if (!isAdded()) return;
             if (task.isSuccessful()) {
                 Toast.makeText(requireContext(), "Check your email to reset your password", Toast.LENGTH_SHORT).show();
             } else {

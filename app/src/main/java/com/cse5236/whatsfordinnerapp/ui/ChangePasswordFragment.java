@@ -1,5 +1,6 @@
 package com.cse5236.whatsfordinnerapp.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -37,7 +38,6 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
     private EditText mOldPassword, mNewPassword, mConfirmPassword;
     private String mEmail;
     private Toolbar mtoolbar1, mtoolbar2;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +101,7 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
         mUser.reauthenticate(credential).addOnCompleteListener(reauth -> {
             if (reauth.isSuccessful()) {
                 mUser.updatePassword(newPassword).addOnCompleteListener(update -> {
+                    if (!isAdded()) return;
                     if (update.isSuccessful()) {
                         Toast.makeText(requireContext(), "Password updated", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(requireActivity(), SettingsActivity.class));
