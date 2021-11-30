@@ -101,6 +101,7 @@ public class AuthFragment extends Fragment implements View.OnClickListener {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                if (!isAdded()) return;
                 Activity activity = requireActivity();
                 if (task.isSuccessful()) {
                     //redirect user to profile

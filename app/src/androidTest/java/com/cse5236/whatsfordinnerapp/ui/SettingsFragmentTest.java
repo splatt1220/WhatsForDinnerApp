@@ -14,7 +14,7 @@ public class SettingsFragmentTest {
 
     @Before
     public void setUp()  {
-        fragmentScenario = FragmentScenario.launchInContainer(SettingsFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(SettingsFragment.class, null, R.style.Theme_Design_NoActionBar);
     }
 
     @Test

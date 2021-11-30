@@ -1,6 +1,9 @@
 package com.cse5236.whatsfordinnerapp.ui;
 
 import androidx.fragment.app.testing.FragmentScenario;
+
+import com.cse5236.whatsfordinnerapp.R;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +14,7 @@ public class ForgetPasswordFragmentTest {
 
     @Before
     public void setUp() {
-        fragmentScenario = FragmentScenario.launchInContainer(ForgetPasswordFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(ForgetPasswordFragment.class, null, R.style.Theme_Design_NoActionBar);
     }
 
     @Test
